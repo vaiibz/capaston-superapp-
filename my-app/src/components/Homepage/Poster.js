@@ -1,6 +1,6 @@
 import styles from   './Poster.module.css'
 import BgImage from '../../assets/image 13.png'
-const Banner = ()=>{
+const Poster = ()=>{
     return(
         <> 
             <div className={styles.Prompt}>
@@ -15,4 +15,4 @@ const Banner = ()=>{
     )
 }
 
-export default Banner
+export default Poster

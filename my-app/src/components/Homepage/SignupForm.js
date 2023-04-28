@@ -1,22 +1,23 @@
 import React, { useState } from "react";
 import styles from "./SignupForm.module.css";
 import validation from "./validation";
- 
-// import { useNavigate } from "react-router-dom";
+
+import { useNavigate } from "react-router-dom";
+
 const SignUpForm = () => {
   const [Values, setValues] = useState({ check: false });
- 
-const [errors, setErrors ] = useState ({});
 
-//   const navigate = useNavigate();
+  const [errors, setErrors] = useState({});
+
+  const navigate = useNavigate();
   const handleChange = (e) => {
     setValues({ ...Values, [e.target.name]: e.target.value });
   };
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    setErrors(validation(Values))
+    setErrors(validation(Values));
     window.localStorage.setItem("userData", JSON.stringify(Values));
-    // navigate("/genre");
+    navigate("/Entertainment");
   };
   return (
     <div className={styles.body}>
@@ -32,32 +33,49 @@ const [errors, setErrors ] = useState ({});
           name="name"
           placeholder="Name"
         ></input>
-         {errors.name && <p className = "error">{errors.name}</p>}
-        
+        {errors.name && (
+          <p className="error" style={{ color: "red", fontSize: "0.9rem" }}>
+            {errors.name}
+          </p>
+        )}
+
         <input
           onChange={(e) => handleChange(e)}
           type="text"
           name="username"
           placeholder="UserName"
         ></input>
-        {errors.username && <p className = "error">{errors.username}</p>}
-        
+        {errors.username && (
+          <p className="error" style={{ color: "red", fontSize: "0.9rem" }}>
+            {errors.username}
+          </p>
+        )}
+
         <input
           onChange={(e) => handleChange(e)}
           type="email"
           name="email"
           placeholder="Email"
         ></input>
-       {errors.email && <p className = "error">{errors.email}</p>}
-        
+        {errors.email && (
+          <p className="error" style={{ color: "red", fontSize: "0.9rem" }}>
+            {errors.email}
+          </p>
+        )}
+
         <input
           onChange={(e) => handleChange(e)}
           type="tel"
           name="mobile"
           placeholder="Mobile"
         ></input>
-       {errors.mobile && <p className = "error">{errors.mobile}</p>}
-         <label>
+        {errors.mobile && (
+          <p className="error" style={{ color: "red", fontSize: "0.9rem" }}>
+            {errors.mobile}
+          </p>
+        )}
+
+        <label>
           <input
             onChange={(e) =>
               setValues({
